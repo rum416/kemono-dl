@@ -101,11 +101,11 @@ def get_args():
                     help="Set the file name pattern for inline images. See Output Patterns for more detail.")
 
     ap.add_argument("--other-filename-pattern",
-                    metavar="OTHER_FILENAME_PATTERN", type=str, default='[{published}] [{id}] [0] {filename}.{ext}',
+                    metavar="OTHER_FILENAME_PATTERN", type=str, default='html\[{published}] [{id}] [0] {filename}.{ext}',
                     help="Set the file name pattern for post content, extracted links, and json. See Output Patterns for more detail.")
 
     ap.add_argument("--user-filename-pattern",
-                    metavar="USER_FILENAME_PATTERN", type=str, default='[{published}] {filename}.{ext}',
+                    metavar="USER_FILENAME_PATTERN", type=str, default='user\[{published}] {filename}.{ext}',
                     help="Set the file name pattern for icon, banner and dms. See Output Patterns for more detail.")
 
     ap.add_argument("--date-strf-pattern",
