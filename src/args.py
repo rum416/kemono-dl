@@ -43,15 +43,15 @@ def get_args():
 
 
     ap.add_argument("--inline",
-                    action='store_true', default=False,
+                    action='store_true', default=True,
                     help="Download the inline images from the post content.")
 
     ap.add_argument("--content",
-                    action='store_true', default=False,
+                    action='store_true', default=True,
                     help="Write the post content to a html file. The html file includes comments if `--comments` is passed.")
 
     ap.add_argument("--comments",
-                    action='store_true', default=False,
+                    action='store_true', default=True,
                     help="Write the post comments to a html file.")
 
     ap.add_argument("--json",
@@ -63,19 +63,19 @@ def get_args():
                     help="Write extracted links from post content to a text file.")
 
     ap.add_argument("--dms",
-                    action='store_true', default=False,
+                    action='store_true', default=True,
                     help="Write user dms to a html file. Only works when a user url is passed.")
 
     ap.add_argument("--icon",
-                    action='store_true', default=False,
+                    action='store_true', default=True,
                     help="Download the users profile icon. Only works when a user url is passed.")
 
     ap.add_argument("--banner",
-                    action='store_true', default=False,
+                    action='store_true', default=True,
                     help="Download the users profile banner. Only works when a user url is passed.")
 
     ap.add_argument("--yt-dlp",
-                    action='store_true', default=False,
+                    action='store_true', default=True,
                     help="Try to download the post embed with yt-dlp.")
 
     ap.add_argument("--skip-attachments",
@@ -89,23 +89,23 @@ def get_args():
 
 
     ap.add_argument("--dirname-pattern",
-                    metavar="DIRNAME_PATTERN", type=str, default='Downloads\{service}\{username} [{user_id}]',
+                    metavar="DIRNAME_PATTERN", type=str, default='{site}/{service}/{username} [{user_id}]',
                     help="Set the file path pattern for where files are downloaded. See Output Patterns for more detail.")
 
     ap.add_argument("--filename-pattern",
-                    metavar="FILENAME_PATTERN", type=str, default='[{published}] [{id}] {title}\{index}_{filename}.{ext}',
+                    metavar="FILENAME_PATTERN", type=str, default='[{published}] [{id}] [{index}] {filename}.{ext}',
                     help="Set the file name pattern for attachments. See Output Patterns for more detail.")
 
     ap.add_argument("--inline-filename-pattern",
-                    metavar="INLINE_FILENAME_PATTERN", type=str, default='[{published}] [{id}] {title}\inline\{index}_{filename}.{ext}',
+                    metavar="INLINE_FILENAME_PATTERN", type=str, default='inline\[{published}] [{id}] [{index}] {filename}.{ext}',
                     help="Set the file name pattern for inline images. See Output Patterns for more detail.")
 
     ap.add_argument("--other-filename-pattern",
-                    metavar="OTHER_FILENAME_PATTERN", type=str, default='[{published}] [{id}] {title}\[{id}]_{filename}.{ext}',
+                    metavar="OTHER_FILENAME_PATTERN", type=str, default='[{published}] [{id}] [0] {filename}.{ext}',
                     help="Set the file name pattern for post content, extracted links, and json. See Output Patterns for more detail.")
 
     ap.add_argument("--user-filename-pattern",
-                    metavar="USER_FILENAME_PATTERN", type=str, default='[{user_id}]_{filename}.{ext}',
+                    metavar="USER_FILENAME_PATTERN", type=str, default='[{published}] {filename}.{ext}',
                     help="Set the file name pattern for icon, banner and dms. See Output Patterns for more detail.")
 
     ap.add_argument("--date-strf-pattern",
@@ -185,16 +185,16 @@ def get_args():
                     help="The args yt-dlp will use to download with. Formatted as a python dictionary object. ")
 
     ap.add_argument("--post-timeout",
-                    metavar="SEC", type=int, default=0,
-                    help="The time in seconds to wait between downloading posts. (default: 0)")
+                    metavar="SEC", type=int, default=2,
+                    help="The time in seconds to wait between downloading posts. (default: 2)")
 
     ap.add_argument("--retry",
-                    metavar="COUNT", type=int, default=5,
-                    help="The amount of times to retry / resume downloading a file. (default: 5)")
+                    metavar="COUNT", type=int, default=10,
+                    help="The amount of times to retry / resume downloading a file. (default: 10)")
 
     ap.add_argument("--ratelimit-sleep",
-                    metavar="SEC", type=int, default=120,
-                    help="The time in seconds to wait after being ratelimited (default: 120)")
+                    metavar="SEC", type=int, default=240,
+                    help="The time in seconds to wait after being ratelimited (default: 240)")
 
     ap.add_argument("--user-agent",
                     metavar="UA", type=str, default='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36',
